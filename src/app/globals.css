@@ -32,7 +32,7 @@ input, textarea {
 
 /* Buttons */
 button {
-  @apply bg-green-500 hover:bg-green-600 text-white font-semibold rounded px-6 py-2 w-full;
+  @apply bg-green-500 hover:bg-green-600 text-white font-semibold rounded px-6 py-2 ;
   transition: background-color 0.3s;
   font-family: 'Josefin Sans', sans-serif;
 }

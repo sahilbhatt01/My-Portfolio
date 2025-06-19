@@ -34,7 +34,7 @@ export default function Header() {
 
         {/* Mobile Menu Icon */}
         <button
-          className="md:hidden text-green-700 w-[10%]"
+          className="md:hidden text-green-700 "
           onClick={() => setMenuOpen(!menuOpen)}
           aria-label="Toggle Menu"
         >
