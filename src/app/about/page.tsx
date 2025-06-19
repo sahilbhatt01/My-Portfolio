@@ -74,7 +74,7 @@ export default function AboutPage() {
             <Brain /> Mindset
           </h3>
           <p>
-            I believe in clean code, reusable components, accessibility-first design, and performance optimization. I'm continuously learning and enjoy staying ahead in modern frontend practices.
+           {` I believe in clean code, reusable components, accessibility-first design, and performance optimization. I'm continuously learning and enjoy staying ahead in modern frontend practices.`}
           </p>
         </motion.div>
 
@@ -87,7 +87,7 @@ export default function AboutPage() {
             <Users /> Team Player
           </h3>
           <p>
-            I thrive in both solo and collaborative environments. I’ve worked closely with designers, and backend engineers to ship real-world products that scale and convert.
+            {`I thrive in both solo and collaborative environments. I’ve worked closely with designers, and backend engineers to ship real-world products that scale and convert.`}
           </p>
         </motion.div>
       </motion.div>
