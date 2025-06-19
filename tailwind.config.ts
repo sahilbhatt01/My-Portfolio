@@ -8,7 +8,7 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['Inter', 'sans-serif']
+         josefin: ['"Josefin Sans"', 'sans-serif'],
       }
     },
   },
