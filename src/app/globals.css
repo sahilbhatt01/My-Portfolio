@@ -1,15 +1,10 @@
 @import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+:root {
+  --background: #f9f9f9; /* Light background */
+  --foreground: #171717;
+  --font-sans: 'Josefin Sans', sans-serif;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -18,27 +13,37 @@
     --foreground: #ededed;
   }
 }
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Base styles */
 body {
-  @apply bg-black text-white font-sans scroll-smooth;
+  @apply bg-[var(--background)] text-[var(--foreground)] font-sans scroll-smooth;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
+/* Inputs */
 input, textarea {
-  @apply bg-green-900 text-white rounded p-3 w-full;
+  @apply bg-white text-black rounded p-3 w-full border border-gray-300;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
+/* Buttons */
 button {
   @apply bg-green-500 hover:bg-green-600 text-white font-semibold rounded px-6 py-2 w-full;
   transition: background-color 0.3s;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
+/* Headings */
 h1, h2, h3, h4, h5 {
-  @apply text-green-300;
+  @apply text-green-700;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
+/* Responsive typography & layout */
 @media (max-width: 640px) {
   h1 {
     @apply text-3xl;
