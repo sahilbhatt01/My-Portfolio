@@ -29,7 +29,7 @@ export default function AboutPage() {
             <Award /> Experience
           </h3>
           <p>
-            Over 1 year of hands-on experience building dynamic, responsive web applications with a focus on user experience and performance. Projects include dashboards, storefronts, and interactive websites.
+            Over 3 year of hands-on experience building dynamic, responsive web applications with a focus on user experience and performance. Projects include dashboards, storefronts, and interactive websites.
           </p>
         </motion.div>
 
