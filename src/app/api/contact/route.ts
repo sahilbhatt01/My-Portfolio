@@ -3,22 +3,26 @@ import { NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
 export async function POST(req: Request) {
-  const body = await req.json();
-  const { name, email, message } = body;
-
-  if (!name || !email || !message) {
-    return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
-  }
-
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: 'sahilbhatt540@gmail.com',
-      pass: process.env.GMAIL_APP_PASSWORD,
-    },
-  });
-
   try {
+    const body = await req.json();
+    console.log('Received body:', body);
+
+    const { name, email, message } = body;
+
+    if (!name || !email || !message) {
+      return NextResponse.json({ error: 'Missing required fields' }, { status: 400 });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'sahilbhatt540@gmail.com',
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
+    });
+
+    await transporter.verify();
+
     await transporter.sendMail({
       from: `Portfolio Contact <sahilbhatt540@gmail.com>`,
       replyTo: email,

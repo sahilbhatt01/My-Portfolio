@@ -9,9 +9,54 @@ import {
   Brush,
   Code2,
   Server,
-  DatabaseZap
+  DatabaseZap,
+  Globe
 } from 'lucide-react';
-import { projects } from '@/data/projects';
+
+const projects = [
+  {
+    title: 'Grasstaken',
+    description: 'A premium e-commerce platform for modern lifestyle products.',
+    type: 'Shopify E-commerce',
+    tech: 'Shopify, Liquid, JavaScript, Tailwind CSS',
+    link: 'https://www.grasstaken.com/'
+  },
+  {
+    title: 'The Plymouth',
+    description: 'Luxury real estate showcase with high-end design and performance.',
+    type: 'Next.js 14 + Shopify Headless',
+    tech: 'Next.js 14, React.js, Tailwind CSS, Shopify Storefront API',
+    link: 'https://www.theplymouth.com/'
+  },
+  {
+    title: 'Black Fashion Fair',
+    description: 'Cultural platform for Black designers and fashion exhibitions.',
+    type: 'Custom Shopify Store',
+    tech: 'Shopify, Liquid, JavaScript, CSS Animations',
+    link: 'https://www.blackfashionfair.org/'
+  },
+  {
+    title: 'Theophilio',
+    description: 'Fashion brand website with immersive product storytelling.',
+    type: 'Shopify Store',
+    tech: 'Shopify, Tailwind CSS, Custom Liquid Sections',
+    link: 'https://theophilio.com/'
+  },
+  {
+    title: 'Fancy Peasant',
+    description: 'Premium gourmet e-commerce store.',
+    type: 'Shopify + Custom Theme',
+    tech: 'Shopify, JavaScript, CSS, Liquid',
+    link: 'https://fancypeasant.com/'
+  },
+  {
+    title: 'Portfolio Platform',
+    description: 'Personal portfolio showcasing development work and case studies.',
+    type: 'Full-stack Web App',
+    tech: 'Next.js 14, React.js, MongoDB, Prisma, Tailwind CSS',
+    link: '#'
+  }
+];
 
 const icons = [
   <ShoppingBag key="shopping-bag" />,
@@ -52,9 +97,22 @@ export default function ProjectsPage() {
               {icons[i % icons.length]} {project.title}
             </div>
             <p className="text-gray-700 mb-3">{project.description}</p>
-            <div className="text-sm text-green-600 italic">
-              Tech: {project.tech || 'Next.js, Tailwind, Shopify'}
+            <div className="text-sm text-green-600 italic mb-2">
+              Type: {project.type}
             </div>
+            <div className="text-sm text-green-600 italic mb-4">
+              Tech: {project.tech}
+            </div>
+            {project.link && (
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-green-700 font-medium hover:underline"
+              >
+                <Globe size={16} /> Visit Website
+              </a>
+            )}
           </motion.div>
         ))}
       </motion.div>
