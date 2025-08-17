@@ -12,6 +12,7 @@ import {
   DatabaseZap,
   Globe
 } from 'lucide-react';
+import UniverseBackground from '@/components/UniverseBackground';
 
 const projects = [
   {
@@ -71,16 +72,23 @@ const icons = [
 
 export default function ProjectsPage() {
   return (
-    <section className="px-6 py-24 max-w-6xl mx-auto bg-gradient-to-br from-white via-green-50 to-white font-josefin">
+    <section className="min-h-screen px-6 py-24 max-w-6xl mx-auto font-josefin bg-[<UniverseBackground />] overflow-hidden">
+      {/* ==== Universe Background ==== */}
+      <div className="absolute inset-0 -z-10">
+        <UniverseBackground />
+      </div>
+
+      {/* ==== Heading ==== */}
       <motion.h2
-        className="text-4xl md:text-5xl font-extrabold italic text-transparent bg-clip-text bg-gradient-to-r from-green-500 via-lime-500 to-green-600 drop-shadow mb-12 flex items-center gap-3"
+        className="text-4xl md:text-5xl font-extrabold italic bg-clip-text text-transparent bg-gradient-to-r from-cyan-400 via-lime-400 to-green-400 drop-shadow mb-12 flex items-center gap-3"
         initial={{ x: -20, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
       >
-        <FolderKanban className="text-green-600" /> Projects
+        <FolderKanban className="text-cyan-400" /> Projects
       </motion.h2>
 
+      {/* ==== Project Cards ==== */}
       <motion.div
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         initial={{ opacity: 0 }}
@@ -91,16 +99,16 @@ export default function ProjectsPage() {
           <motion.div
             key={i}
             whileHover={{ scale: 1.05, rotate: 1 }}
-            className="p-6 rounded-2xl bg-white border border-green-200 shadow-xl transition-transform duration-300 hover:shadow-2xl"
+            className="p-6 rounded-2xl bg-white/5 border border-cyan-400/30 shadow-xl transition-transform duration-300 hover:shadow-2xl"
           >
-            <div className="flex items-center gap-3 mb-3 text-green-700 text-xl font-semibold">
+            <div className="flex items-center gap-3 mb-3 text-cyan-400 text-xl font-semibold">
               {icons[i % icons.length]} {project.title}
             </div>
-            <p className="text-gray-700 mb-3">{project.description}</p>
-            <div className="text-sm text-green-600 italic mb-2">
+            <p className="text-gray-100 mb-3">{project.description}</p>
+            <div className="text-sm text-cyan-300 italic mb-2">
               Type: {project.type}
             </div>
-            <div className="text-sm text-green-600 italic mb-4">
+            <div className="text-sm text-cyan-300 italic mb-4">
               Tech: {project.tech}
             </div>
             {project.link && (
@@ -108,7 +116,7 @@ export default function ProjectsPage() {
                 href={project.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-green-700 font-medium hover:underline"
+                className="inline-flex items-center gap-2 text-cyan-400 font-medium hover:underline"
               >
                 <Globe size={16} /> Visit Website
               </a>
