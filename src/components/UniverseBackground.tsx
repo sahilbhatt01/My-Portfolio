@@ -2,7 +2,7 @@
 
 import React, { Suspense, useMemo, useRef } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
-import { Stars, OrbitControls, Sparkles } from '@react-three/drei';
+import { Stars, Sparkles } from '@react-three/drei';
 import * as THREE from 'three';
 
 /** ===== Nebula Background ===== */
@@ -15,7 +15,6 @@ function Nebula() {
     canvas.width = size;
     canvas.height = size;
     const ctx = canvas.getContext('2d')!;
-
     ctx.fillStyle = '#000';
     ctx.fillRect(0, 0, size, size);
 
@@ -29,13 +28,13 @@ function Nebula() {
       ctx.fill();
     };
 
-    const colors = ['#5533ff', '#aa33ff', '#33ddff', '#ff3399'];
+    const colors = ['#5533ff', '#aa33ff', '#33ddff', '#ff3399', '#ff77cc'];
     for (let i = 0; i < 20; i++) {
       drawNebula(
         Math.random() * size,
         Math.random() * size,
         Math.random() * 250 + 150,
-        colors[(Math.random() * colors.length) | 0]
+        colors[Math.floor(Math.random() * colors.length)]
       );
     }
 
@@ -47,86 +46,39 @@ function Nebula() {
   return (
     <mesh ref={mesh}>
       <sphereGeometry args={[90, 64, 64]} />
-      <meshBasicMaterial
-        map={texture}
-        side={THREE.BackSide}
-        transparent
-        opacity={0.45}
-      />
+      <meshBasicMaterial map={texture} side={THREE.BackSide} transparent opacity={0.45} />
     </mesh>
   );
 }
 
-/** ===== Planet ===== */
-function Planet({ position = [6, -1, -10] as [number, number, number], radius = 2.4 }) {
-  const planetRef = useRef<THREE.Mesh>(null);
+/** ===== Shooting Stars ===== */
+function ShootingStars() {
+  const starsRef = useRef<THREE.Points>(null);
 
-  const texture = useMemo(() => {
-    const size = 512;
-    const canvas = document.createElement('canvas');
-    canvas.width = size;
-    canvas.height = size;
-    const ctx = canvas.getContext('2d')!;
-
-    const oceanGradient = ctx.createLinearGradient(0, 0, size, size);
-    oceanGradient.addColorStop(0, '#0B3D91');
-    oceanGradient.addColorStop(1, '#0F5BA7');
-    ctx.fillStyle = oceanGradient;
-    ctx.fillRect(0, 0, size, size);
-
-    const drawBlob = (x: number, y: number, r: number, color: string, alpha = 0.28) => {
-      ctx.save();
-      ctx.globalAlpha = alpha;
-      const grad = ctx.createRadialGradient(x, y, r * 0.2, x, y, r);
-      grad.addColorStop(0, color);
-      grad.addColorStop(1, 'transparent');
-      ctx.fillStyle = grad;
-      ctx.beginPath();
-      ctx.arc(x, y, r, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.restore();
-    };
-
-    const colors = ['#2E8B57', '#3E9B4F', '#5C8A3C', '#7C6E3C'];
-    for (let i = 0; i < 28; i++) {
-      drawBlob(Math.random() * size, Math.random() * size, (Math.random() * 0.12 + 0.06) * size, colors[(Math.random() * colors.length) | 0]);
+  const positions = useMemo(() => {
+    const arr = [];
+    for (let i = 0; i < 200; i++) {
+      arr.push((Math.random() - 0.5) * 500); // x
+      arr.push((Math.random() - 0.5) * 500); // y
+      arr.push((Math.random() - 0.5) * 500); // z
     }
-
-    for (let i = 0; i < 14; i++) {
-      drawBlob(Math.random() * size, Math.random() * size, (Math.random() * 0.1 + 0.05) * size, '#E6F6FF', 0.18);
-    }
-
-    return new THREE.CanvasTexture(canvas);
+    return new Float32Array(arr);
   }, []);
 
-  useFrame((_, delta) => {
-    if (planetRef.current) {
-      planetRef.current.rotation.y += delta * 0.05;
+  useFrame(() => {
+    if (starsRef.current) {
+      starsRef.current.rotation.x += 0.0005;
+      starsRef.current.rotation.y += 0.001;
     }
   });
 
   return (
-    <group position={position}>
-      <mesh ref={planetRef}>
-        <sphereGeometry args={[radius, 96, 96]} />
-        <meshStandardMaterial
-          map={texture}
-          roughness={0.6}
-          metalness={0.2}
-          toneMapped={false}
-        />
-      </mesh>
-      <mesh>
-        <sphereGeometry args={[radius * 1.05, 96, 96]} />
-        <meshBasicMaterial
-          color="#00ccff"
-          transparent
-          opacity={0.22}
-          blending={THREE.AdditiveBlending}
-          side={THREE.BackSide}
-        />
-      </mesh>
-    </group>
+    <points ref={starsRef}>
+      <bufferGeometry>
+        <bufferAttribute attach="attributes-position" args={[positions, 3]} />
+      </bufferGeometry>
+      <pointsMaterial color="#ffffff" size={0.7} />
+    </points>
   );
 }
 
@@ -142,13 +94,19 @@ export default function UniverseBackground() {
       <pointLight position={[-5, -5, -5]} intensity={1.2} color="#ff00ff" />
 
       <Suspense fallback={null}>
-        <Stars radius={250} depth={140} count={22000} factor={2} fade={false} speed={0.1} saturation={0} />
+        <Stars
+          radius={250}
+          depth={140}
+          count={22000}
+          factor={2}
+          fade={false}
+          speed={0.1}
+          saturation={0}
+        />
         <Nebula />
         <Sparkles count={500} scale={100} size={3} speed={0.4} color="#bbddff" />
-        <Planet />
+        <ShootingStars />
       </Suspense>
-
-      <OrbitControls enableZoom={false} enablePan={false} autoRotate autoRotateSpeed={0.15} />
     </Canvas>
   );
 }
