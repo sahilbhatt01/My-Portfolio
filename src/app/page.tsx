@@ -1,11 +1,34 @@
 'use client';
-
+import { useEffect, useRef } from "react";
+import { init } from "ityped";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { Github, Linkedin, Facebook } from 'lucide-react';
 import UniverseBackground from '@/components/UniverseBackground';
 
 export default function Home() {
+  const spanRef = useRef(null);
+
+  useEffect(() => {
+    if (spanRef.current) {
+      init(spanRef.current, {
+        showCursor: true,
+        typeSpeed: 300,
+        strings: [
+          "Next.js & React.js – Built dynamic dashboards and SEO-friendly websites",
+          "Three.js 3D Models – Developed interactive 3D product previews",
+          "Powered by OpenAI – Integrated AI chatbots and content generation tools",
+          "Mobile Apps – Delivered cross-platform apps with React Native & Flutter",
+          "Shopify Integration – Customized storefronts and automated order management",
+          "Backend Development – Created APIs with Next.js, Node.js & Express",
+          "Database Management – Worked with MongoDB, PostgreSQL & Prisma ORM",
+          "Authentication & Security – Implemented JWT, NextAuth & role-based access",
+          "API Integrations – Connected third-party services like Shopify & OpenAI",
+          "Cloud Deployment – Deployed apps on Vercel, AWS & DigitalOcean",
+        ],
+      });
+    }
+  }, []);
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-6 py-24 font-josefin bg-black overflow-hidden">
       {/* Universe Background */}
@@ -22,9 +45,11 @@ export default function Home() {
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1, type: 'spring' }}
         >
-         {` Hi, I'm Sahil Bhatt – Full Stack Web Developer`}
+          {` Hi, I'm Sahil Bhatt – Full Stack Web Developer`}
         </motion.h1>
-
+        <p className="text-[#dfd9ff] font-medium text-[20px] text-green-500">
+          <span ref={spanRef}></span>
+        </p>
         {/* Profile Image */}
         <motion.div whileHover={{ scale: 1.05 }} className="relative mt-8">
           <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-cyan-400 shadow-xl shadow-cyan-400/60">
@@ -46,7 +71,7 @@ export default function Home() {
           transition={{ delay: 0.5 }}
         >
           I am a <span className="text-cyan-300 font-semibold">Full Stack Web Developer</span> with over 4+ years of experience building
-          <span className="text-purple-300 font-semibold"> dynamic, responsive, and scalable web applications</span>. 
+          <span className="text-purple-300 font-semibold"> dynamic, responsive, and scalable web applications</span>.
           I specialize in crafting <span className="text-fuchsia-300 font-semibold">immersive 3D websites</span>, high-performance <span className="text-cyan-300 font-semibold">Shopify stores</span>, and
           <span className="text-purple-300 font-semibold"> custom WordPress & PHP solutions</span> optimized for speed, SEO, and user experience.
           <br /><br />
