@@ -1,11 +1,19 @@
-'use client';
-import { motion } from 'framer-motion';
-import { User, Award, Code, Laptop2, Brain, Users, Database } from 'lucide-react';
-import UniverseBackground from '@/components/UniverseBackground';
+"use client";
+import { motion } from "framer-motion";
+import {
+  User,
+  Award,
+  Code,
+  Laptop2,
+  Brain,
+  Users,
+  Database,
+} from "lucide-react";
+import UniverseBackground from "@/components/UniverseBackground";
 
 export default function AboutPage() {
   return (
-    <section className="min-h-screen px-6 py-24 max-w-5xl mx-auto font-josefin overflow-hidden">
+    <section className="min-h-screen px-6 py-24 mx-auto font-josefin overflow-hidden">
       {/* ==== Universe Background ==== */}
       <div className="absolute inset-0 -z-10 h-[150%]">
         <UniverseBackground />
@@ -37,9 +45,13 @@ export default function AboutPage() {
             <Award /> Experience
           </h3>
           <p className="text-gray-100 leading-relaxed">
-            Over 3 years of professional experience developing high-performance, responsive web applications with a strong focus on user experience, SEO, and maintainable code architecture. 
-            I have delivered solutions for e-commerce storefronts, SaaS dashboards, content-driven websites, and interactive 3D experiences. 
-            My work spans the full lifecycle—from planning and design collaboration to deployment and optimization.
+            Over 2+ years of professional experience developing
+            high-performance, responsive web applications with a strong focus on
+            user experience, SEO, and maintainable code architecture. I have
+            delivered solutions for e-commerce storefronts, SaaS dashboards,
+            content-driven websites, and interactive 3D experiences. My work
+            spans the full lifecycle—from planning and design collaboration to
+            deployment and optimization.
           </p>
         </motion.div>
 
@@ -52,17 +64,18 @@ export default function AboutPage() {
             <Code /> Tech Stack
           </h3>
           <p className="text-gray-100">
-            Skilled in{' '}
-            <span className="text-cyan-300 font-medium">Next.js</span>,{' '}
-            <span className="text-cyan-300 font-medium">React</span>,{' '}
-            <span className="text-cyan-300 font-medium">Shopify</span>,{' '}
-            <span className="text-cyan-300 font-medium">WordPress</span>,{' '}
-            <span className="text-cyan-300 font-medium">PHP</span>,{' '}
-            <span className="text-cyan-300 font-medium">Tailwind CSS</span>,{' '}
-            <span className="text-cyan-300 font-medium">Prisma</span>,{' '}
-            <span className="text-cyan-300 font-medium">Framer Motion</span>, and{' '}
-            <span className="text-cyan-300 font-medium">Three.js</span>.  
-            Adept at building reusable component libraries, performance-focused UIs, and integrating APIs seamlessly.
+            Skilled in{" "}
+            <span className="text-cyan-300 font-medium">Next.js</span>,{" "}
+            <span className="text-cyan-300 font-medium">React</span>,{" "}
+            <span className="text-cyan-300 font-medium">Shopify</span>,{" "}
+            <span className="text-cyan-300 font-medium">WordPress</span>,{" "}
+            <span className="text-cyan-300 font-medium">PHP</span>,{" "}
+            <span className="text-cyan-300 font-medium">Tailwind CSS</span>,{" "}
+            <span className="text-cyan-300 font-medium">Prisma</span>,{" "}
+            <span className="text-cyan-300 font-medium">Framer Motion</span>,
+            and <span className="text-cyan-300 font-medium">Three.js</span>.
+            Adept at building reusable component libraries, performance-focused
+            UIs, and integrating APIs seamlessly.
           </p>
         </motion.div>
 
@@ -75,8 +88,11 @@ export default function AboutPage() {
             <Laptop2 /> What I Build
           </h3>
           <p className="text-gray-100">
-            I create fast, SEO-optimized websites, high-conversion product pages, modern landing pages, and interactive portfolios. 
-            I also specialize in custom Shopify themes, real-time dashboards, and integrating 3D/VR-style visuals using WebGL for immersive user engagement.
+            I create fast, SEO-optimized websites, high-conversion product
+            pages, modern landing pages, and interactive portfolios. I also
+            specialize in custom Shopify themes, real-time dashboards, and
+            integrating 3D/VR-style visuals using WebGL for immersive user
+            engagement.
           </p>
         </motion.div>
 
@@ -89,12 +105,15 @@ export default function AboutPage() {
             <Database /> Database & Backend
           </h3>
           <p className="text-gray-100">
-            Extensive experience working with{' '}
-            <span className="text-cyan-300 font-medium">PostgreSQL</span> (primary and most frequently used),{' '}
-            <span className="text-cyan-300 font-medium">MySQL</span>, and{' '}
-            <span className="text-cyan-300 font-medium">MongoDB</span>.  
-            Skilled in designing efficient schemas, writing optimized queries, and integrating Prisma ORM for type-safe database operations.  
-            Familiar with backend development using Node.js and Next.js API routes for full-stack solutions.
+            Extensive experience working with{" "}
+            <span className="text-cyan-300 font-medium">PostgreSQL</span>{" "}
+            (primary and most frequently used),{" "}
+            <span className="text-cyan-300 font-medium">MySQL</span>, and{" "}
+            <span className="text-cyan-300 font-medium">MongoDB</span>. Skilled
+            in designing efficient schemas, writing optimized queries, and
+            integrating Prisma ORM for type-safe database operations. Familiar
+            with backend development using Node.js and Next.js API routes for
+            full-stack solutions.
           </p>
         </motion.div>
 
@@ -107,7 +126,7 @@ export default function AboutPage() {
             <Brain /> Mindset
           </h3>
           <p className="text-gray-100">
-           {`I believe in clean, maintainable code, accessibility-first design, and performance optimization. 
+            {`I believe in clean, maintainable code, accessibility-first design, and performance optimization. 
             I’m committed to continuous learning, staying ahead in modern frontend practices, and adopting the best tools for the job.`}
           </p>
         </motion.div>
